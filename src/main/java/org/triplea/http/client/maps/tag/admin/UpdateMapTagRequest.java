@@ -17,7 +17,6 @@ public class UpdateMapTagRequest {
   private String tagName;
   private String newTagValue;
 
-
   boolean success;
 
   /**
@@ -25,6 +24,5 @@ public class UpdateMapTagRequest {
    * null or a confirmation message, otherwise if not success, then the value should be an error
    * message back to the user.
    */
-  @Nullable
-  String message;
+  @Nullable String message;
 }
