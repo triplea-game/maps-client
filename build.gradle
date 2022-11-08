@@ -9,7 +9,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'io.freefair.lombok'
 
 group = 'org.triplea'
-version = '0.0.0'
+version = '1.0.0'
 
 jar {
     archivesBaseName = 'org.triplea.maps-client'
