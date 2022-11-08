@@ -3,6 +3,7 @@ plugins {
     id 'maven-publish'
     id 'io.freefair.lombok' version '6.5.1'
     id 'com.diffplug.spotless' version '6.11.0'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 apply plugin: 'java'
@@ -40,8 +41,8 @@ publishing {
         }
     }
     publications {
-        gpr(MavenPublication) {
-            from(components.java)
+        shadow(MavenPublication) { publication ->
+            project.shadow.component(publication)
         }
     }
 }
