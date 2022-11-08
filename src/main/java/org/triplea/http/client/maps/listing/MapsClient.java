@@ -4,9 +4,10 @@ import feign.Feign;
 import feign.FeignException;
 import feign.RequestLine;
 import feign.gson.GsonDecoder;
+import feign.gson.GsonEncoder;
 import java.net.URI;
 import java.util.List;
-import feign.gson.GsonEncoder;
+
 /**
  * Http client to communicate with the maps server and get a listing of maps available for download.
  */
