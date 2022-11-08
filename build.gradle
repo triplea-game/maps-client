@@ -6,12 +6,14 @@ plugins {
 }
 
 apply plugin: 'java'
+apply plugin: 'pmd'
 apply plugin: 'maven-publish'
 apply plugin: 'io.freefair.lombok'
 apply plugin: 'com.diffplug.spotless'
 
 group = 'org.triplea'
-
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
 
 def revisionCount() {
     ['sh', '-c', 'git rev-list --count HEAD'].execute().text.trim()
@@ -57,6 +59,14 @@ spotless {
         trimTrailingWhitespace()
     }
 }
+
+pmd {
+    consoleOutput = true
+    ruleSetFiles = files(rootProject.file('pmd.xml'))
+    ruleSets = []
+    incrementalAnalysis = true
+}
+
 
 dependencies {
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
