@@ -11,7 +11,12 @@ apply plugin: 'io.freefair.lombok'
 apply plugin: 'com.diffplug.spotless'
 
 group = 'org.triplea'
-version = '1.0.0'
+
+
+def revisionCount() {
+    ['sh', '-c', 'git rev-list --count HEAD'].execute().text.trim()
+}
+version = "1.0." + revisionCount()
 
 jar {
     archivesBaseName = 'org.triplea.maps-client'
