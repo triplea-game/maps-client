@@ -11,7 +11,7 @@ jobs:
           distribution: 'adopt'
       - name: Code Checks
         run: ./gradlew check
-      - uses: paambaati/codeclimate-action@v2.2.4
+      - uses: paambaati/codeclimate-action@v3.2.0
         env:
           CC_TEST_REPORTER_ID: a4cf577fc754380e7088126353d7b975ad79a72e2d1a2a558071b95bfb41be9f
         with:
