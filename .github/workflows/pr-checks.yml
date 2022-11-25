@@ -15,5 +15,6 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: a4cf577fc754380e7088126353d7b975ad79a72e2d1a2a558071b95bfb41be9f
         with:
+          coverageCommand: ./gradlew check
           debug: true
           coverageLocations: build/reports/jacoco/test/jacocoTestReport.xml:jacoco
