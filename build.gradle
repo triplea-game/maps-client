@@ -1,16 +1,12 @@
 plugins {
     id 'java'
     id 'maven-publish'
+    id 'jacoco'
+    id 'pmd'
     id 'io.freefair.lombok' version '6.5.1'
     id 'com.diffplug.spotless' version '6.11.0'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
-
-apply plugin: 'java'
-apply plugin: 'pmd'
-apply plugin: 'maven-publish'
-apply plugin: 'io.freefair.lombok'
-apply plugin: 'com.diffplug.spotless'
 
 group = 'org.triplea'
 sourceCompatibility = JavaVersion.VERSION_11
@@ -50,6 +46,22 @@ publishing {
 test {
     useJUnitPlatform()
 }
+
+tasks.withType(Test).configureEach {
+    testLogging {
+        exceptionFormat = 'full'
+        showStandardStreams = true
+    }
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled false
+    }
+}
+
+check.dependsOn jacocoTestReport
 
 spotless {
     java {
