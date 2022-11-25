@@ -63,7 +63,7 @@ spotless {
 
 pmd {
     consoleOutput = true
-    ruleSetFiles = files(rootProject.file('pmd.xml'))
+    ruleSetFiles = files(rootProject.file('.build/pmd.xml'))
     ruleSets = []
     incrementalAnalysis = true
 }
