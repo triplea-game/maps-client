@@ -1,22 +1,17 @@
 plugins {
     id 'java'
+    id 'pmd'
     id 'maven-publish'
     id 'io.freefair.lombok' version '6.5.1'
     id 'com.diffplug.spotless' version '6.11.0'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
-apply plugin: 'java'
-apply plugin: 'pmd'
-apply plugin: 'maven-publish'
-apply plugin: 'io.freefair.lombok'
-apply plugin: 'com.diffplug.spotless'
-
 group = 'org.triplea'
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 
-def revisionCount() {
+def static revisionCount() {
     ['sh', '-c', 'git rev-list --count HEAD'].execute().text.trim()
 }
 version = "1.0." + revisionCount()
@@ -41,14 +36,24 @@ publishing {
         }
     }
     publications {
-        shadow(MavenPublication) { publication ->
-            project.shadow.component(publication)
+        shadow(MavenPublication) {
+            artifact shadowJar
+            pom {
+                packaging 'jar'
+            }
         }
     }
 }
 
 test {
     useJUnitPlatform()
+}
+
+tasks.withType(Test).configureEach {
+    testLogging {
+        exceptionFormat = 'full'
+        showStandardStreams = true
+    }
 }
 
 spotless {
