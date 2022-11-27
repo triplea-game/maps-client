@@ -3,15 +3,13 @@ package org.triplea.http.client.maps.tag.admin;
 import javax.annotation.Nullable;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@EqualsAndHashCode
 public class UpdateMapTagRequest {
   private String mapName;
   private String tagName;

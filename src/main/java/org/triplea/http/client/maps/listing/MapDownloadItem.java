@@ -4,34 +4,32 @@ import java.util.List;
 import javax.annotation.Nonnull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * Represents a map that can be downloaded. This data object contains information on how to render a
  * preview and description of the map, as well as the needed URLs to download the map itself.
  */
+@Data
 @Builder
 @AllArgsConstructor
-@Getter
-@ToString
-@EqualsAndHashCode
+@NoArgsConstructor
 public class MapDownloadItem {
   /** URL where the map can be downloaded. */
-  @Nonnull private final String downloadUrl;
+  @Nonnull private String downloadUrl;
   /** URL of the preview image of the map. */
-  @Nonnull private final String previewImageUrl;
+  @Nonnull private String previewImageUrl;
 
-  @Nonnull private final String mapName;
-  @Nonnull private final Long lastCommitDateEpochMilli;
+  @Nonnull private String mapName;
+  @Nonnull private Long lastCommitDateEpochMilli;
   /** HTML description of the map. */
-  @Nonnull private final String description;
+  @Nonnull private String description;
 
   /** Additional meta data about the map, eg: categories, rating, etc... */
-  private final List<MapTag> mapTags;
+  private List<MapTag> mapTags;
 
-  @Nonnull private final Long downloadSizeInBytes;
+  @Nonnull private Long downloadSizeInBytes;
 
   /**
    * Finds a tag by name and returns its corresponding value. If the tag is not found or has a null

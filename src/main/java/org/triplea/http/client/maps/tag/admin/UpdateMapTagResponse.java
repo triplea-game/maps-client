@@ -1,11 +1,15 @@
 package org.triplea.http.client.maps.tag.admin;
 
 import javax.annotation.Nullable;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Value;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
 @Builder
-@Value
+@AllArgsConstructor
+@NoArgsConstructor
 public class UpdateMapTagResponse {
   boolean success;
 
