@@ -2,8 +2,8 @@ package org.triplea.http.client.maps.tag.admin;
 
 import feign.Feign;
 import feign.RequestLine;
-import feign.gson.GsonDecoder;
-import feign.gson.GsonEncoder;
+import feign.jackson.JacksonDecoder;
+import feign.jackson.JacksonEncoder;
 import java.net.URI;
 import java.util.List;
 
@@ -14,8 +14,8 @@ public interface MapTagAdminClient {
 
   static MapTagAdminClient newClient(final URI mapsServerUri, final String apiKey) {
     return Feign.builder()
-        .encoder(new GsonEncoder())
-        .decoder(new GsonDecoder())
+        .encoder(new JacksonEncoder())
+        .decoder(new JacksonDecoder())
         .requestInterceptor(
             requestTemplate -> {
               requestTemplate.header("Authorization", "Bearer " + apiKey);
